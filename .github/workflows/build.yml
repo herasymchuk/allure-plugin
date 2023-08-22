@@ -18,4 +18,8 @@ jobs:
       with:
         java-version: '11'
     - name: "Build"
-      run: ./mvnw package
+      run: ./mvnw package && mkdir staging && cp target/*.jar staging
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Package
+        path: staging
